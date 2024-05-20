@@ -18,3 +18,13 @@ entity Jhipster {
   closed Boolean
 }
 
+entity JhipsterSetting {
+  theme String
+  pageSize Integer
+}
+
+relationship OneToOne {
+  JhipsterSetting{jhipster required} to Jhipster
+}
+
+

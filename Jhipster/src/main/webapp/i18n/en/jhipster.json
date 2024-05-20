@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "name": "Name",
-      "closed": "Closed"
+      "closed": "Closed",
+      "jhipsterSetting": "Jhipster Setting"
     }
   }
 }

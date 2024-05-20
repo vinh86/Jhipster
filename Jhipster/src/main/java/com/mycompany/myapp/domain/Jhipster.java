@@ -1,5 +1,6 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import org.hibernate.annotations.Cache;
@@ -27,6 +28,10 @@ public class Jhipster implements Serializable {
 
     @Column(name = "closed")
     private Boolean closed;
+
+    @JsonIgnoreProperties(value = { "jhipster" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "jhipster")
+    private JhipsterSetting jhipsterSetting;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -67,6 +72,25 @@ public class Jhipster implements Serializable {
 
     public void setClosed(Boolean closed) {
         this.closed = closed;
+    }
+
+    public JhipsterSetting getJhipsterSetting() {
+        return this.jhipsterSetting;
+    }
+
+    public void setJhipsterSetting(JhipsterSetting jhipsterSetting) {
+        if (this.jhipsterSetting != null) {
+            this.jhipsterSetting.setJhipster(null);
+        }
+        if (jhipsterSetting != null) {
+            jhipsterSetting.setJhipster(this);
+        }
+        this.jhipsterSetting = jhipsterSetting;
+    }
+
+    public Jhipster jhipsterSetting(JhipsterSetting jhipsterSetting) {
+        this.setJhipsterSetting(jhipsterSetting);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

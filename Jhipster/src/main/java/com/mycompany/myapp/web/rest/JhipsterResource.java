@@ -131,10 +131,15 @@ public class JhipsterResource {
     /**
      * {@code GET  /jhipsters} : get all the jhipsters.
      *
+     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of jhipsters in body.
      */
     @GetMapping("")
-    public List<JhipsterDTO> getAllJhipsters() {
+    public List<JhipsterDTO> getAllJhipsters(@RequestParam(name = "filter", required = false) String filter) {
+        if ("jhipstersetting-is-null".equals(filter)) {
+            log.debug("REST request to get all Jhipsters where jhipsterSetting is null");
+            return jhipsterService.findAllWhereJhipsterSettingIsNull();
+        }
         log.debug("REST request to get all Jhipsters");
         return jhipsterService.findAll();
     }
