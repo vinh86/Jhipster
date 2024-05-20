@@ -1,0 +1,25 @@
+{
+  "jhipsterApp": {
+    "jhipster": {
+      "home": {
+        "title": "Jhipsters",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Jhipster",
+        "createOrEditLabel": "Create or edit a Jhipster",
+        "notFound": "No Jhipsters found"
+      },
+      "created": "A new Jhipster is created with identifier {{ param }}",
+      "updated": "A Jhipster is updated with identifier {{ param }}",
+      "deleted": "A Jhipster is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Jhipster {{ id }}?"
+      },
+      "detail": {
+        "title": "Jhipster"
+      },
+      "id": "ID",
+      "name": "Name",
+      "closed": "Closed"
+    }
+  }
+}

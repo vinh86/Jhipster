@@ -1,0 +1,20 @@
+application {
+  config {
+    baseName jhipster
+    applicationType monolith
+    clientFramework react
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType h2Disk
+    buildTool maven
+  }
+
+  entities *
+  dto * with mapstruct
+}
+
+entity Jhipster {
+  name String
+  closed Boolean
+}
+

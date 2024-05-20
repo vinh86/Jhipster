@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "jhipster",
+    "buildTool": "maven",
+    "clientFramework": "react",
+    "devDatabaseType": "h2Disk",
+    "devServerPort": 9060,
+    "entities": ["Jhipster"],
+    "jhipsterVersion": "8.4.0",
+    "jwtSecretKey": "MjE5NTA1YjcxNjZhNGI0ZWJkOGM4ZjUxZjA0MzQ1NGQ5ZWJmOGVjNzIwZTYzY2YyMGQ4MTMzMjIxMjBjNjZhY2VlY2U4NDYyYzFhYmNhODRmYmU2Nzk3NGFhNWY3YWM1N2IwZjMxZGI5YzcxMjZjYWU2ZTlkYTQ4OGU5M2M5Y2Q=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1716223641000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "prodDatabaseType": "postgresql",
+    "skipCommitHook": true
+  }
+}
