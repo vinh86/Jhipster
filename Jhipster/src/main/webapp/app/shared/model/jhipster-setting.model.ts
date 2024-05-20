@@ -4,6 +4,7 @@ export interface IJhipsterSetting {
   id?: number;
   theme?: string | null;
   pageSize?: number | null;
+  others?: string | null;
   jhipster?: IJhipster;
 }
 

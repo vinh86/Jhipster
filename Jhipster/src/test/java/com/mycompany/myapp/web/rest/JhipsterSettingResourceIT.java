@@ -40,6 +40,9 @@ class JhipsterSettingResourceIT {
     private static final Integer DEFAULT_PAGE_SIZE = 1;
     private static final Integer UPDATED_PAGE_SIZE = 2;
 
+    private static final String DEFAULT_OTHERS = "AAAAAAAAAA";
+    private static final String UPDATED_OTHERS = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/jhipster-settings";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -70,7 +73,7 @@ class JhipsterSettingResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static JhipsterSetting createEntity(EntityManager em) {
-        JhipsterSetting jhipsterSetting = new JhipsterSetting().theme(DEFAULT_THEME).pageSize(DEFAULT_PAGE_SIZE);
+        JhipsterSetting jhipsterSetting = new JhipsterSetting().theme(DEFAULT_THEME).pageSize(DEFAULT_PAGE_SIZE).others(DEFAULT_OTHERS);
         // Add required entity
         Jhipster jhipster;
         if (TestUtil.findAll(em, Jhipster.class).isEmpty()) {
@@ -91,7 +94,7 @@ class JhipsterSettingResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static JhipsterSetting createUpdatedEntity(EntityManager em) {
-        JhipsterSetting jhipsterSetting = new JhipsterSetting().theme(UPDATED_THEME).pageSize(UPDATED_PAGE_SIZE);
+        JhipsterSetting jhipsterSetting = new JhipsterSetting().theme(UPDATED_THEME).pageSize(UPDATED_PAGE_SIZE).others(UPDATED_OTHERS);
         // Add required entity
         Jhipster jhipster;
         if (TestUtil.findAll(em, Jhipster.class).isEmpty()) {
@@ -163,7 +166,8 @@ class JhipsterSettingResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(jhipsterSetting.getId().intValue())))
             .andExpect(jsonPath("$.[*].theme").value(hasItem(DEFAULT_THEME)))
-            .andExpect(jsonPath("$.[*].pageSize").value(hasItem(DEFAULT_PAGE_SIZE)));
+            .andExpect(jsonPath("$.[*].pageSize").value(hasItem(DEFAULT_PAGE_SIZE)))
+            .andExpect(jsonPath("$.[*].others").value(hasItem(DEFAULT_OTHERS)));
     }
 
     @Test
@@ -179,7 +183,8 @@ class JhipsterSettingResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(jhipsterSetting.getId().intValue()))
             .andExpect(jsonPath("$.theme").value(DEFAULT_THEME))
-            .andExpect(jsonPath("$.pageSize").value(DEFAULT_PAGE_SIZE));
+            .andExpect(jsonPath("$.pageSize").value(DEFAULT_PAGE_SIZE))
+            .andExpect(jsonPath("$.others").value(DEFAULT_OTHERS));
     }
 
     @Test
@@ -201,7 +206,7 @@ class JhipsterSettingResourceIT {
         JhipsterSetting updatedJhipsterSetting = jhipsterSettingRepository.findById(jhipsterSetting.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedJhipsterSetting are not directly saved in db
         em.detach(updatedJhipsterSetting);
-        updatedJhipsterSetting.theme(UPDATED_THEME).pageSize(UPDATED_PAGE_SIZE);
+        updatedJhipsterSetting.theme(UPDATED_THEME).pageSize(UPDATED_PAGE_SIZE).others(UPDATED_OTHERS);
         JhipsterSettingDTO jhipsterSettingDTO = jhipsterSettingMapper.toDto(updatedJhipsterSetting);
 
         restJhipsterSettingMockMvc
@@ -320,7 +325,7 @@ class JhipsterSettingResourceIT {
         JhipsterSetting partialUpdatedJhipsterSetting = new JhipsterSetting();
         partialUpdatedJhipsterSetting.setId(jhipsterSetting.getId());
 
-        partialUpdatedJhipsterSetting.theme(UPDATED_THEME).pageSize(UPDATED_PAGE_SIZE);
+        partialUpdatedJhipsterSetting.theme(UPDATED_THEME).pageSize(UPDATED_PAGE_SIZE).others(UPDATED_OTHERS);
 
         restJhipsterSettingMockMvc
             .perform(

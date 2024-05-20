@@ -48,7 +48,8 @@ public class JhipsterSettingAsserts {
         assertThat(expected)
             .as("Verify JhipsterSetting relevant properties")
             .satisfies(e -> assertThat(e.getTheme()).as("check theme").isEqualTo(actual.getTheme()))
-            .satisfies(e -> assertThat(e.getPageSize()).as("check pageSize").isEqualTo(actual.getPageSize()));
+            .satisfies(e -> assertThat(e.getPageSize()).as("check pageSize").isEqualTo(actual.getPageSize()))
+            .satisfies(e -> assertThat(e.getOthers()).as("check others").isEqualTo(actual.getOthers()));
     }
 
     /**

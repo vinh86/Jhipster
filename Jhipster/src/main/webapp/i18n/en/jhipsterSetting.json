@@ -20,6 +20,7 @@
       "id": "ID",
       "theme": "Theme",
       "pageSize": "Page Size",
+      "others": "Others",
       "jhipster": "Jhipster"
     }
   }

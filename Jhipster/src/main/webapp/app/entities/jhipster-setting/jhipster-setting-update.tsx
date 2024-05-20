@@ -117,6 +117,13 @@ export const JhipsterSettingUpdate = () => {
                 type="text"
               />
               <ValidatedField
+                label={translate('jhipsterApp.jhipsterSetting.others')}
+                id="jhipster-setting-others"
+                name="others"
+                data-cy="others"
+                type="text"
+              />
+              <ValidatedField
                 id="jhipster-setting-jhipster"
                 name="jhipster"
                 data-cy="jhipster"

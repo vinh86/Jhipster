@@ -12,6 +12,10 @@
     {
       "fieldName": "pageSize",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "others",
+      "fieldType": "String"
     }
   ],
   "name": "JhipsterSetting",

@@ -30,6 +30,9 @@ public class JhipsterSetting implements Serializable {
     @Column(name = "page_size")
     private Integer pageSize;
 
+    @Column(name = "others")
+    private String others;
+
     @JsonIgnoreProperties(value = { "jhipsterSetting" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @NotNull
@@ -77,6 +80,19 @@ public class JhipsterSetting implements Serializable {
         this.pageSize = pageSize;
     }
 
+    public String getOthers() {
+        return this.others;
+    }
+
+    public JhipsterSetting others(String others) {
+        this.setOthers(others);
+        return this;
+    }
+
+    public void setOthers(String others) {
+        this.others = others;
+    }
+
     public Jhipster getJhipster() {
         return this.jhipster;
     }
@@ -116,6 +132,7 @@ public class JhipsterSetting implements Serializable {
             "id=" + getId() +
             ", theme='" + getTheme() + "'" +
             ", pageSize=" + getPageSize() +
+            ", others='" + getOthers() + "'" +
             "}";
     }
 }

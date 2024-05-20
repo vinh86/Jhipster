@@ -21,6 +21,7 @@ entity Jhipster {
 entity JhipsterSetting {
   theme String
   pageSize Integer
+  others String
 }
 
 relationship OneToOne {

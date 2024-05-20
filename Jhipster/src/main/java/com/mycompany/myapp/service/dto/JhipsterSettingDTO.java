@@ -16,6 +16,8 @@ public class JhipsterSettingDTO implements Serializable {
 
     private Integer pageSize;
 
+    private String others;
+
     @NotNull
     private JhipsterDTO jhipster;
 
@@ -41,6 +43,14 @@ public class JhipsterSettingDTO implements Serializable {
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public String getOthers() {
+        return others;
+    }
+
+    public void setOthers(String others) {
+        this.others = others;
     }
 
     public JhipsterDTO getJhipster() {
@@ -79,6 +89,7 @@ public class JhipsterSettingDTO implements Serializable {
             "id=" + getId() +
             ", theme='" + getTheme() + "'" +
             ", pageSize=" + getPageSize() +
+            ", others='" + getOthers() + "'" +
             ", jhipster=" + getJhipster() +
             "}";
     }

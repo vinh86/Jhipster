@@ -44,6 +44,12 @@ export const JhipsterSettingDetail = () => {
           </dt>
           <dd>{jhipsterSettingEntity.pageSize}</dd>
           <dt>
+            <span id="others">
+              <Translate contentKey="jhipsterApp.jhipsterSetting.others">Others</Translate>
+            </span>
+          </dt>
+          <dd>{jhipsterSettingEntity.others}</dd>
+          <dt>
             <Translate contentKey="jhipsterApp.jhipsterSetting.jhipster">Jhipster</Translate>
           </dt>
           <dd>{jhipsterSettingEntity.jhipster ? jhipsterSettingEntity.jhipster.id : ''}</dd>

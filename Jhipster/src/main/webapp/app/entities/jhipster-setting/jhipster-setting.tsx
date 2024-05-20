@@ -96,6 +96,10 @@ export const JhipsterSetting = () => {
                   <Translate contentKey="jhipsterApp.jhipsterSetting.pageSize">Page Size</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('pageSize')} />
                 </th>
+                <th className="hand" onClick={sort('others')}>
+                  <Translate contentKey="jhipsterApp.jhipsterSetting.others">Others</Translate>{' '}
+                  <FontAwesomeIcon icon={getSortIconByFieldName('others')} />
+                </th>
                 <th>
                   <Translate contentKey="jhipsterApp.jhipsterSetting.jhipster">Jhipster</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -112,6 +116,7 @@ export const JhipsterSetting = () => {
                   </td>
                   <td>{jhipsterSetting.theme}</td>
                   <td>{jhipsterSetting.pageSize}</td>
+                  <td>{jhipsterSetting.others}</td>
                   <td>
                     {jhipsterSetting.jhipster ? (
                       <Link to={`/jhipster/${jhipsterSetting.jhipster.id}`}>{jhipsterSetting.jhipster.id}</Link>
