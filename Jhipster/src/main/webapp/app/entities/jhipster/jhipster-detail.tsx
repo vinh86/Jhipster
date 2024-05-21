@@ -43,6 +43,12 @@ export const JhipsterDetail = () => {
             </span>
           </dt>
           <dd>{jhipsterEntity.closed ? 'true' : 'false'}</dd>
+          <dt>
+            <span id="setting">
+              <Translate contentKey="jhipsterApp.jhipster.setting">Setting</Translate>
+            </span>
+          </dt>
+          <dd>{jhipsterEntity.setting}</dd>
         </dl>
         <Button tag={Link} to="/jhipster" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

@@ -15,6 +15,8 @@ public class JhipsterDTO implements Serializable {
 
     private Boolean closed;
 
+    private String setting;
+
     public Long getId() {
         return id;
     }
@@ -37,6 +39,14 @@ public class JhipsterDTO implements Serializable {
 
     public void setClosed(Boolean closed) {
         this.closed = closed;
+    }
+
+    public String getSetting() {
+        return setting;
+    }
+
+    public void setSetting(String setting) {
+        this.setting = setting;
     }
 
     @Override
@@ -67,6 +77,7 @@ public class JhipsterDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", closed='" + getClosed() + "'" +
+            ", setting='" + getSetting() + "'" +
             "}";
     }
 }

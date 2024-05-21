@@ -48,7 +48,8 @@ public class JhipsterAsserts {
         assertThat(expected)
             .as("Verify Jhipster relevant properties")
             .satisfies(e -> assertThat(e.getName()).as("check name").isEqualTo(actual.getName()))
-            .satisfies(e -> assertThat(e.getClosed()).as("check closed").isEqualTo(actual.getClosed()));
+            .satisfies(e -> assertThat(e.getClosed()).as("check closed").isEqualTo(actual.getClosed()))
+            .satisfies(e -> assertThat(e.getSetting()).as("check setting").isEqualTo(actual.getSetting()));
     }
 
     /**

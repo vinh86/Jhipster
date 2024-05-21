@@ -101,6 +101,13 @@ export const JhipsterUpdate = () => {
                 check
                 type="checkbox"
               />
+              <ValidatedField
+                label={translate('jhipsterApp.jhipster.setting')}
+                id="jhipster-setting"
+                name="setting"
+                data-cy="setting"
+                type="text"
+              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/jhipster" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

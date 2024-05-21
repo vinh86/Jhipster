@@ -95,6 +95,10 @@ export const Jhipster = () => {
                   <Translate contentKey="jhipsterApp.jhipster.closed">Closed</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('closed')} />
                 </th>
+                <th className="hand" onClick={sort('setting')}>
+                  <Translate contentKey="jhipsterApp.jhipster.setting">Setting</Translate>{' '}
+                  <FontAwesomeIcon icon={getSortIconByFieldName('setting')} />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -108,6 +112,7 @@ export const Jhipster = () => {
                   </td>
                   <td>{jhipster.name}</td>
                   <td>{jhipster.closed ? 'true' : 'false'}</td>
+                  <td>{jhipster.setting}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/jhipster/${jhipster.id}`} color="info" size="sm" data-cy="entityDetailsButton">

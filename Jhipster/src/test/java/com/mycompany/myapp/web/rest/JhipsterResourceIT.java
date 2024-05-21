@@ -39,6 +39,9 @@ class JhipsterResourceIT {
     private static final Boolean DEFAULT_CLOSED = false;
     private static final Boolean UPDATED_CLOSED = true;
 
+    private static final String DEFAULT_SETTING = "AAAAAAAAAA";
+    private static final String UPDATED_SETTING = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/jhipsters";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -69,7 +72,7 @@ class JhipsterResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Jhipster createEntity(EntityManager em) {
-        Jhipster jhipster = new Jhipster().name(DEFAULT_NAME).closed(DEFAULT_CLOSED);
+        Jhipster jhipster = new Jhipster().name(DEFAULT_NAME).closed(DEFAULT_CLOSED).setting(DEFAULT_SETTING);
         return jhipster;
     }
 
@@ -80,7 +83,7 @@ class JhipsterResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Jhipster createUpdatedEntity(EntityManager em) {
-        Jhipster jhipster = new Jhipster().name(UPDATED_NAME).closed(UPDATED_CLOSED);
+        Jhipster jhipster = new Jhipster().name(UPDATED_NAME).closed(UPDATED_CLOSED).setting(UPDATED_SETTING);
         return jhipster;
     }
 
@@ -142,7 +145,8 @@ class JhipsterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(jhipster.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].closed").value(hasItem(DEFAULT_CLOSED.booleanValue())));
+            .andExpect(jsonPath("$.[*].closed").value(hasItem(DEFAULT_CLOSED.booleanValue())))
+            .andExpect(jsonPath("$.[*].setting").value(hasItem(DEFAULT_SETTING)));
     }
 
     @Test
@@ -158,7 +162,8 @@ class JhipsterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(jhipster.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.closed").value(DEFAULT_CLOSED.booleanValue()));
+            .andExpect(jsonPath("$.closed").value(DEFAULT_CLOSED.booleanValue()))
+            .andExpect(jsonPath("$.setting").value(DEFAULT_SETTING));
     }
 
     @Test
@@ -180,7 +185,7 @@ class JhipsterResourceIT {
         Jhipster updatedJhipster = jhipsterRepository.findById(jhipster.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedJhipster are not directly saved in db
         em.detach(updatedJhipster);
-        updatedJhipster.name(UPDATED_NAME).closed(UPDATED_CLOSED);
+        updatedJhipster.name(UPDATED_NAME).closed(UPDATED_CLOSED).setting(UPDATED_SETTING);
         JhipsterDTO jhipsterDTO = jhipsterMapper.toDto(updatedJhipster);
 
         restJhipsterMockMvc
@@ -270,7 +275,7 @@ class JhipsterResourceIT {
         Jhipster partialUpdatedJhipster = new Jhipster();
         partialUpdatedJhipster.setId(jhipster.getId());
 
-        partialUpdatedJhipster.name(UPDATED_NAME);
+        partialUpdatedJhipster.name(UPDATED_NAME).setting(UPDATED_SETTING);
 
         restJhipsterMockMvc
             .perform(
@@ -298,7 +303,7 @@ class JhipsterResourceIT {
         Jhipster partialUpdatedJhipster = new Jhipster();
         partialUpdatedJhipster.setId(jhipster.getId());
 
-        partialUpdatedJhipster.name(UPDATED_NAME).closed(UPDATED_CLOSED);
+        partialUpdatedJhipster.name(UPDATED_NAME).closed(UPDATED_CLOSED).setting(UPDATED_SETTING);
 
         restJhipsterMockMvc
             .perform(

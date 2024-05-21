@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240520164721"
+    "changelogDate": "20240521171453"
   },
   "applications": ["jhipster"],
   "dto": "mapstruct",
@@ -12,6 +12,10 @@
     {
       "fieldName": "closed",
       "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "setting",
+      "fieldType": "String"
     }
   ],
   "name": "Jhipster",

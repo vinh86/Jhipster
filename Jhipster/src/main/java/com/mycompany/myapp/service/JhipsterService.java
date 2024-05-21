@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -87,19 +86,6 @@ public class JhipsterService {
     public List<JhipsterDTO> findAll() {
         log.debug("Request to get all Jhipsters");
         return jhipsterRepository.findAll().stream().map(jhipsterMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    /**
-     *  Get all the jhipsters where JhipsterSetting is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<JhipsterDTO> findAllWhereJhipsterSettingIsNull() {
-        log.debug("Request to get all jhipsters where JhipsterSetting is null");
-        return StreamSupport.stream(jhipsterRepository.findAll().spliterator(), false)
-            .filter(jhipster -> jhipster.getJhipsterSetting() == null)
-            .map(jhipsterMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

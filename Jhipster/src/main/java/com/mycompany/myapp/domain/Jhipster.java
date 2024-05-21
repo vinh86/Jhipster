@@ -1,6 +1,5 @@
 package com.mycompany.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import org.hibernate.annotations.Cache;
@@ -29,9 +28,8 @@ public class Jhipster implements Serializable {
     @Column(name = "closed")
     private Boolean closed;
 
-    @JsonIgnoreProperties(value = { "jhipster" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "jhipster")
-    private JhipsterSetting jhipsterSetting;
+    @Column(name = "setting")
+    private String setting;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -74,23 +72,17 @@ public class Jhipster implements Serializable {
         this.closed = closed;
     }
 
-    public JhipsterSetting getJhipsterSetting() {
-        return this.jhipsterSetting;
+    public String getSetting() {
+        return this.setting;
     }
 
-    public void setJhipsterSetting(JhipsterSetting jhipsterSetting) {
-        if (this.jhipsterSetting != null) {
-            this.jhipsterSetting.setJhipster(null);
-        }
-        if (jhipsterSetting != null) {
-            jhipsterSetting.setJhipster(this);
-        }
-        this.jhipsterSetting = jhipsterSetting;
-    }
-
-    public Jhipster jhipsterSetting(JhipsterSetting jhipsterSetting) {
-        this.setJhipsterSetting(jhipsterSetting);
+    public Jhipster setting(String setting) {
+        this.setSetting(setting);
         return this;
+    }
+
+    public void setSetting(String setting) {
+        this.setting = setting;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -119,6 +111,7 @@ public class Jhipster implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", closed='" + getClosed() + "'" +
+            ", setting='" + getSetting() + "'" +
             "}";
     }
 }

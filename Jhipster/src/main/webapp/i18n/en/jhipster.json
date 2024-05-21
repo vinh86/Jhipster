@@ -20,7 +20,7 @@
       "id": "ID",
       "name": "Name",
       "closed": "Closed",
-      "jhipsterSetting": "Jhipster Setting"
+      "setting": "Setting"
     }
   }
 }

@@ -16,16 +16,5 @@ application {
 entity Jhipster {
   name String
   closed Boolean
+  setting String
 }
-
-entity JhipsterSetting {
-  theme String
-  pageSize Integer
-  others String
-}
-
-relationship OneToOne {
-  JhipsterSetting{jhipster required} to Jhipster
-}
-
-
