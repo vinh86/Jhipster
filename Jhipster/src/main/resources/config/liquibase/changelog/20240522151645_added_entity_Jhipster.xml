@@ -20,7 +20,7 @@
             <column name="closed" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="setting" type="varchar(255)">
+            <column name="setting" type="jsonb">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
