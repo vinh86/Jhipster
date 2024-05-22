@@ -5,7 +5,7 @@ application {
     clientFramework react
     authenticationType jwt
     prodDatabaseType postgresql
-    devDatabaseType h2Disk
+    devDatabaseType postgresql
     buildTool maven
   }
 
