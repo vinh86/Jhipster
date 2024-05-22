@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 /**
  * A Jhipster.
@@ -28,8 +30,9 @@ public class Jhipster implements Serializable {
     @Column(name = "closed")
     private Boolean closed;
 
-    @Column(name = "setting")
-    private String setting;
+    @Column(name = "setting", columnDefinition = "jsonb")
+    @JdbcTypeCode(value = SqlTypes.JSON)
+    private JhipsterSetting setting;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -72,16 +75,21 @@ public class Jhipster implements Serializable {
         this.closed = closed;
     }
 
-    public String getSetting() {
+    public JhipsterSetting getSetting() {
         return this.setting;
     }
 
-    public Jhipster setting(String setting) {
+    public Jhipster setting(JhipsterSetting setting) {
         this.setSetting(setting);
         return this;
     }
 
-    public void setSetting(String setting) {
+    public Jhipster setting(String setting) {
+        this.setSetting(new JhipsterSetting(setting));
+        return this;
+    }
+
+    public void setSetting(JhipsterSetting setting) {
         this.setting = setting;
     }
 
